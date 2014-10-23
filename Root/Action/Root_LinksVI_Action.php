@@ -21,7 +21,7 @@ if (isset($_POST['Post_VI_Action'])) {
     $links_state = 'publish';
     $links_title = trim($_POST['title']);
     $links_content = trim($_POST['content']);
-    $links_date = date("Y/m-d");
+    $links_date = date("Y-m-d");
     $links_time = date("H:i");
     if ($_POST['state'] == 'draft') {
         unset($links_state);
@@ -32,6 +32,11 @@ if (isset($_POST['Post_VI_Action'])) {
     }else {
         $links_path = $_POST['path'];
     }
+    if ($_POST['year'] != '') $links_date = substr_replace($links_date, $_POST['year'], 0, 4);
+    if ($_POST['month'] != '') $links_date = substr_replace($links_date, $_POST['month'], 5, 2);
+    if ($_POST['day'] != '') $links_date = substr_replace($links_date, $_POST['day'], 8, 2);
+    if ($_POST['hourse'] != '') $links_time = substr_replace($links_time, $_POST['hourse'], 0, 2);
+    if ($_POST['minute'] != '') $links_time = substr_replace($links_time, $_POST['minute'], 3, 2);
   $links_path_part = explode('/', $links_path);
     $links_path_count = count($links_path_part);
     for ($i = 0; $i < $links_path_count; $i++) {

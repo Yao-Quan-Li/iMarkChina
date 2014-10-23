@@ -23,7 +23,7 @@ if (isset($_POST['Post_VI_Action'])) {
     $post_state = 'publish';
     $post_title = trim($_POST['title']);
     $post_content = get_magic_quotes_gpc() ? stripslashes(trim($_POST['content'])) : trim($_POST['content']);
-    $post_date = date("Y/m-d");
+    $post_date = date("Y-m-d");
     $post_time = date("H:i");
     $post_can_comment = $_POST['can_comment'];
     if ($_POST['tags'] == ''){
@@ -42,6 +42,11 @@ if (isset($_POST['Post_VI_Action'])) {
         unset($post_state);
         $post_state = 'draft';
     }
+    if ($_POST['year'] != '') $post_date = substr_replace($post_date, $_POST['year'], 0, 4);
+    if ($_POST['month'] != '') $post_date = substr_replace($post_date, $_POST['month'], 5, 2);
+    if ($_POST['day'] != '') $post_date = substr_replace($post_date, $_POST['day'], 8, 2);
+    if ($_POST['hourse'] != '') $post_time = substr_replace($post_time, $_POST['hourse'], 0, 2);
+    if ($_POST['minute'] != '') $post_time = substr_replace($post_time, $_POST['minute'], 3, 2);
   $post_tags_count = count($post_tags);
     for ($i = 0; $i < $post_tags_count; $i++) {
         $trim = trim($post_tags[$i]);

@@ -7,7 +7,7 @@ iMarkChina是一个不需要数据库轻量级博客程序，只要服务器硬�
 
 在使用iMarkChina的过程中，请保护好（./Index/Date/）Date目录下的所文件与文件夹，博客所有数据都在Date目录下！
 （That's the point！）
-
+ 
 //写在中//
 
 安装方法:

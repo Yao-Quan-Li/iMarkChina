@@ -23,7 +23,7 @@ if (isset($_POST['Post_VI_Action'])) {
     $page_state = 'publish';
     $page_title = trim($_POST['title']);
     $page_content = get_magic_quotes_gpc() ? stripslashes(trim($_POST['content'])) : trim($_POST['content']);;
-    $page_date = date("Y/m-d");
+    $page_date = date("Y-m-d");
     $page_time = date("H:i");
     $page_can_comment = $_POST['can_comment'];
     if ($_POST['state'] == 'draft') {
@@ -35,6 +35,11 @@ if (isset($_POST['Post_VI_Action'])) {
     }else {
         $page_path = $_POST['path'];
     }
+    if ($_POST['year'] != '') $page_date = substr_replace($page_date, $_POST['year'], 0, 4);
+    if ($_POST['month'] != '') $page_date = substr_replace($page_date, $_POST['month'], 5, 2);
+    if ($_POST['day'] != '') $page_date = substr_replace($page_date, $_POST['day'], 8, 2);
+    if ($_POST['hourse'] != '') $page_time = substr_replace($page_time, $_POST['hourse'], 0, 2);
+    if ($_POST['minute'] != '') $page_time = substr_replace($page_time, $_POST['minute'], 3, 2);
    $page_path_part = explode('/', $page_path);
     $page_path_count = count($page_path_part);
     for ($i = 0; $i < $page_path_count; $i++) {

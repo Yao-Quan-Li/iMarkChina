@@ -41,14 +41,24 @@ $_SESSION['Post_Code'] = $Post_Code;
     <?php } else { ?>
     <input type="submit" name="save" value="修改" style="padding:6px 20px;"/><br /> 
     <?php } if ($post_id != '') { ?>
-    <div style="float:left">
+   <div style="float:left">
     添加时间：
-    <select name="Year_date">
-      <option value="<?php echo htmlspecialchars($post_date);?>"><?php echo htmlspecialchars($post_date);?></option>
+    <select name="year">
+      <option value="<?php echo substr($post_date, 0, 4);?>"><?php echo substr($post_date, 0, 4);?></option>
     </select> -
-    <select name="Year_time">
-      <option value="<?php echo htmlspecialchars($post_time);?>"><?php echo htmlspecialchars($post_time);?></option>
+    <select name="month">
+      <option value="<?php echo substr($post_date, 5, 2);?>"><?php echo substr($post_date, 5, 2);?></option>
+    </select> -
+    <select name="day">
+      <option value="<?php echo substr($post_date, 8, 2);?>"><?php echo substr($post_date, 8, 2);?></option>
+    </select>&nbsp;
+    <select name="hourse">
+      <option value="<?php echo substr($post_time, 0, 2);?>"><?php echo substr($post_time, 0, 2);?></option>
+    </select> :
+    <select name="minute">
+      <option value="<?php echo substr($post_time, 3, 2);?>"><?php echo substr($post_time, 3, 2);?></option>
     </select> 
+    </div>
      <?php }  if ($post_id != '') { ?>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  添加状态：

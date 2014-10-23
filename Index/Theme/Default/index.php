@@ -28,9 +28,7 @@ include 'head.php'; ?>
                         <div class="ct">
                             <div class="ctc box">
                                 <div class="text">
-                                    <p><?php Mark_The_Link(); ?><br/><br/><?php Mark_The_Des(); ?>
-                                        <a href="<?php Mark_The_Url(); ?>">》》》》Read More>>>>></a>
-                                    </p>
+                                    <p><?php Mark_The_Link(); ?><br/><br/><?php Mark_The_Des(); ?></p>
                                 </div>
                             </div>
                         </div>

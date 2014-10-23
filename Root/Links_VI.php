@@ -43,11 +43,20 @@ echo $_SERVER['REQUEST_URI']; ?>" method="post">
     <?php } if ($links_title != '') { ?>
    <div style="float:left">
     添加时间：
-    <select name="Year_date">
-      <option value="<?php echo htmlspecialchars($links_date);?>"><?php echo htmlspecialchars($links_date);?></option>
+    <select name="year">
+      <option value="<?php echo substr($links_date, 0, 4);?>"><?php echo substr($links_date, 0, 4);?></option>
+    </select>-
+    <select name="month">
+      <option value="<?php echo substr($links_date, 5, 2);?>"><?php echo substr($links_date, 5, 2);?></option>
     </select> -
-    <select name="Year_time">
-      <option value="<?php echo htmlspecialchars($links_time);?>"><?php echo htmlspecialchars($links_time);?></option>
+    <select name="day">
+      <option value="<?php echo substr($links_date, 8, 2);?>"><?php echo substr($links_date, 8, 2);?></option>
+    </select>&nbsp;
+    <select name="hourse">
+      <option value="<?php echo substr($links_time, 0, 2);?>"><?php echo substr($links_time, 0, 2);?></option>
+    </select> :
+    <select name="minute">
+      <option value="<?php echo substr($links_time, 3, 2);?>"><?php echo substr($links_time, 3, 2);?></option>
     </select> 
     </div>
     <?php } if ($links_title != '') { ?>
