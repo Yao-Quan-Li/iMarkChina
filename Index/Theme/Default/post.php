@@ -17,12 +17,10 @@
 		</div>
 	</div>
 	<div class="info box">
-		<div class="tags box">
-		Tags: <?php Mark_The_Tags('', '', ''); ?>
-		</div>
+		<div class="tags box">Tags: <?php Mark_The_Tags('', '', ''); ?></div>
 		<div class="meta box">
 			<img src="<?php __Index__('Public/Images/addtime.png')?>" width="17" height="17" />
-			<a class="date" href="#"><?php Mark_The_Data(); ?></a>
+			<a class="date" href="#"><?php Mark_The_Data(); ?>-<?php Mark_The_time();?></a>
 			<img src="<?php __Index__('Public/Images/contacts.png')?>" width="17" height="17" />
 			<a class="cmt" href="#">By: <?php Mark_Nick_Name(); ?></a>
 			<a href="#" class="cc cc_1" title=" 署名-非商业性使用-禁止演绎 3.0">&nbsp;</a>

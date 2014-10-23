@@ -6,13 +6,16 @@
 *Date:2014.
 */
 include 'Head.php';
-include 'Action/Root_PageVI_Action.php';
+include 'Action/Root_PageVI_Action.php';  
+$Post_Code = mt_rand(0,1000000);
+$_SESSION['Post_Code'] = $Post_Code;
  ?>
+
     <div class="span9">
      <div id="content">
     <div id="content_box">
     <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
-  <input type="hidden" name="Post_VI_Action" value=""/>
+  <input type="hidden" name="Post_VI_Action" value="<?php echo $Post_Code;?>"/>
   <?php if ($succeed) {   if ($page_state == 'publish') { ?>
   <div class="updated">页面已添加。 
  <a href="<?php  echo $Mark_Config_Action ['site_link']; ?>/?<?php  echo $page_path; ?>/" target="_blank">查看页面</a></div>
@@ -43,54 +46,12 @@ if ($page_can_comment == '0') echo 'selected="selected";'; ?>>禁用</option>
     <?php } if ($page_title != '') { ?>
     <div style="float:left">
     添加时间：
-    <select name="year">
-      <option value=""></option>
-<?php $Y_Time = date('Y', time());
-    $year = substr($page_date, 0, 4);
-    for ($i = 2014; $i <= $Y_Time; $i++) { ?>
-      <option value="<?php  echo $i; ?>" <?php  if ($year == $i) echo 'selected="selected";' ?>><?php   echo $i; ?></option>
-<?php  } ?>
+    <select name="Year_date">
+      <option value="<?php echo htmlspecialchars($page_date);?>"><?php echo htmlspecialchars($page_date);?></option>
     </select> -
-    <select name="month">
-      <option value=""></option>
-<?php  $month = substr($page_date, 5, 2);
-    for ($i = 1; $i <= 12; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php  echo $m; ?>" <?php if ($month == $m) echo 'selected="selected";' ?>><?php  echo $m; ?></option>
-<?php  } ?>
-    </select> -
-    <select name="day">
-      <option value=""></option>
-<?php $day = substr($page_date, 8, 2);
-    for ($i = 1; $i <= 31; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php   echo $m; ?>" <?php if ($day == $m) echo 'selected="selected";' ?>><?php echo $m; ?></option>
-<?php  } ?>
-    </select>&nbsp;
-    <select name="hourse">
-      <option value=""></option>
-<?php  $hourse = substr($page_time, 0, 2);
-    for ($i = 0; $i <= 23; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php echo $m; ?>" <?php if ($hourse == $m) echo 'selected="selected";' ?>><?php echo $m; ?></option>
-<?php  } ?>
-    </select> :
-    <select name="minute">
-      <option value=""></option>
-<?php   $minute = substr($page_time, 3, 2);
-    for ($i = 0; $i <= 59; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php  echo $m; ?>" <?php if ($minute == $m) echo 'selected="selected";' ?>><?php echo $m; ?></option>
-<?php  } ?>
-    </select> :
-    <select name="second">
-      <option value=""></option>
-<?php  $second = substr($page_time, 6, 2);
-    for ($i = 0; $i <= 59; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php  echo $m; ?>" <?php  if ($second == $m) echo 'selected="selected";' ?>><?php echo $m; ?></option>
-<?php  } ?>
-    </select>
+    <select name="Year_time">
+      <option value="<?php echo htmlspecialchars($page_time);?>"><?php echo htmlspecialchars($page_time);?></option>
+    </select> 
     </div>
     <?php } if ($page_title != '') { ?>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

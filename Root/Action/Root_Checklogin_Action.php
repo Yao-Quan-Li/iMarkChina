@@ -5,7 +5,6 @@
 *Links:http://www.imarkchina.cn.
 *Date:2014.
 */
-ob_start();
 session_start(); //初始session
 error_reporting(E_ALL ^ E_NOTICE);
 include_once $_SERVER['DOCUMENT_ROOT'] . '/Index/Action/Index_Config_Action.php';

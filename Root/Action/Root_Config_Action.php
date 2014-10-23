@@ -5,7 +5,6 @@
 *Links:http://www.imarkchina.cn.
 *Date:2014.
 */
-ob_start();
 session_start();
 include 'Root_Hackdone_Action.php';
 $display_info = false;

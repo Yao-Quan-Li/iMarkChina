@@ -7,13 +7,14 @@
 */
 include 'Head.php';
 include 'Action/Root_PostVI_Action.php';
-//var_dump($post_tags);die;
+$Post_Code = mt_rand(0,1000000);
+$_SESSION['Post_Code'] = $Post_Code;
  ?>
     <div class="span9">
      <div id="content">
     <div id="content_box">
     <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
-  <input type="hidden" name="Post_VI_Action" value=""/>
+  <input type="hidden" name="Post_VI_Action" value="<?php echo $Post_Code;?>"/>
   <?php if ($succeed) { if ($post_state == 'publish') { ?>
   <div class="updated">日志已添加。 
   <a href="<?php echo $Mark_Config_Action['site_link'];?>/?post/<?php echo $post_id;?>" target="_blank">查看日志</a>
@@ -42,49 +43,12 @@ include 'Action/Root_PostVI_Action.php';
     <?php } if ($post_id != '') { ?>
     <div style="float:left">
     添加时间：
-    <select name="year">
-      <option value=""></option>
-<?php $Y_Time = date('Y', time());$year = substr($post_date, 0, 4); for ($i = 2014; $i <= $Y_Time; $i++) { ?>
-      <option value="<?php echo $i;?>" <?php if ($year == $i) echo 'selected="selected";'?>>
-      <?php echo $i;?></option>
-<?php  } ?>
+    <select name="Year_date">
+      <option value="<?php echo htmlspecialchars($post_date);?>"><?php echo htmlspecialchars($post_date);?></option>
     </select> -
-    <select name="month">
-      <option value=""></option>
-<?php  $month = substr($post_date, 5, 2);  for ($i = 1; $i <= 12; $i++) {  $m = sprintf("%02d", $i); ?>
-      <option value="<?php echo $m;?>" <?php if ($month == $m) echo 'selected="selected";'?>>
-      <?php echo $m;?></option>
-<?php } ?>
-    </select> -
-    <select name="day">
-      <option value=""></option>
-<?php $day = substr($post_date, 8, 2);for ($i = 1; $i <= 31; $i++) {$m = sprintf("%02d", $i);?>
-      <option value="<?php echo $m;?>" <?php if ($day == $m) echo 'selected="selected";'?>>
-      <?php  echo $m;?></option>
-<?php  } ?>
-    </select>&nbsp;
-    <select name="hourse">
-      <option value=""></option>
-<?php $hourse = substr($post_time, 0, 2);for ($i = 0; $i <= 23; $i++) {$m = sprintf("%02d", $i);?>
-      <option value="<?php echo $m;?>" <?php if ($hourse == $m) echo 'selected="selected";'?>>
-      <?php echo $m; ?></option>
-<?php  } ?>
-    </select> :
-    <select name="minute">
-      <option value=""></option>
-<?php $minute = substr($post_time, 3, 2);for ($i = 0; $i <= 59; $i++) {$m = sprintf("%02d", $i);?>
-      <option value="<?php echo $m;?>" <?php if ($minute == $m) echo 'selected="selected";'?>>
-      <?php echo $m;?></option>
-<?php } ?>
-  </select> :
-    <select name="second">
-      <option value=""></option>
-<?php $second = substr($post_time, 6, 2);for ($i = 0; $i <= 59; $i++) {$m = sprintf("%02d", $i);?>
-      <option value="<?php echo $m;?>" <?php if ($second == $m) echo 'selected="selected";'?>>
-      <?php echo $m;?></option>
-<?php } ?>
-    </select>
-  </div>
+    <select name="Year_time">
+      <option value="<?php echo htmlspecialchars($post_time);?>"><?php echo htmlspecialchars($post_time);?></option>
+    </select> 
      <?php }  if ($post_id != '') { ?>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  添加状态：

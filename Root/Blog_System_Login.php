@@ -5,7 +5,6 @@
 *Links:http://www.imarkchina.cn.
 *Date:2014.
 */
-ob_start();
 session_start();
 error_reporting(E_ALL ^ E_NOTICE);
 include $_SERVER['DOCUMENT_ROOT'] . '/Public/Resources/Config.php';

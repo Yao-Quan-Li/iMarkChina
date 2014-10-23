@@ -5,7 +5,6 @@
 *Links:http://www.imarkchina.cn.
 *Date:2014.
 */
-ob_start();
 session_start();
 include 'Root_Hackdone_Action.php';
 $post_id = '';
@@ -19,17 +18,20 @@ $post_can_comment = '';
 $succeed = false;
 date_default_timezone_set('PRC');
 if (isset($_POST['Post_VI_Action'])) {
+     if ($_POST['Post_VI_Action'] == $_SESSION['Post_Code']) {   
     $post_id = $_POST['id'];
     $post_state = 'publish';
     $post_title = trim($_POST['title']);
     $post_content = get_magic_quotes_gpc() ? stripslashes(trim($_POST['content'])) : trim($_POST['content']);
-    $post_date = date("Y-m-d");
-    $post_time = date("H:i:s");
+    $post_date = date("Y/m-d");
+    $post_time = date("H:i");
     $post_can_comment = $_POST['can_comment'];
     if ($_POST['tags'] == ''){
         $con =  strip_tags($post_content);
         $con = str_replace('&nbsp;', '',$con);
         $con = str_replace('&quot;', '',$con);
+        $con = str_replace('&amp;lt;','',$con);
+        $con = str_replace('&lt;','',$con);
         $con = Getstr($con,8);
         $con = trim($con);
         $post_tags = explode('，', $con);
@@ -40,13 +42,7 @@ if (isset($_POST['Post_VI_Action'])) {
         unset($post_state);
         $post_state = 'draft';
     }
-    if ($_POST['year'] != '') $post_date = substr_replace($post_date, $_POST['year'], 0, 4);
-    if ($_POST['month'] != '') $post_date = substr_replace($post_date, $_POST['month'], 5, 2);
-    if ($_POST['day'] != '') $post_date = substr_replace($post_date, $_POST['day'], 8, 2);
-    if ($_POST['hourse'] != '') $post_time = substr_replace($post_time, $_POST['hourse'], 0, 2);
-    if ($_POST['minute'] != '') $post_time = substr_replace($post_time, $_POST['minute'], 3, 2);
-    if ($_POST['second'] != '') $post_time = substr_replace($post_time, $_POST['second'], 6, 2);
-    $post_tags_count = count($post_tags);
+  $post_tags_count = count($post_tags);
     for ($i = 0; $i < $post_tags_count; $i++) {
         $trim = trim($post_tags[$i]);
         if ($trim == '') {
@@ -96,6 +92,10 @@ if (isset($_POST['Post_VI_Action'])) {
         $data['content'] = $post_content;
         file_put_contents($file_path, serialize($data));
         $succeed = true;
+    }
+                   unset($_SESSION["Post_Code"]);  
+    }else{
+        echo "<script language=javascript>alert('请不重复刷新页面！(Please,don\'t！)');window.location='/Root/Post.php'</script>";
     }
 } else if (isset($_GET['id'])) {
     $file_path = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Post/Data/' . $_GET['id'] . '.Mark';

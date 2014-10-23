@@ -12,7 +12,6 @@
  * 注1：本程序仅为演示用，请您务必根据自己需求进行相应修改，或者重开发
  * 注2：本程序特别针对HTML5上传，加入了特殊处理
  */
-ob_start();
 session_start();
 header('Content-Type: text/html; charset=UTF-8');
 include 'Action/Root_Hackdone_Action.php';

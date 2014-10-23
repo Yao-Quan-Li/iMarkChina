@@ -5,7 +5,6 @@
 *Links:http://www.imarkchina.cn.
 *Date:2014.
 */
-ob_start();
 session_start();
 include 'Root_Hackdone_Action.php';
 $links_file = '';
@@ -17,12 +16,13 @@ $links_time = '';
 $succeed = false;
 date_default_timezone_set('PRC');
 if (isset($_POST['Post_VI_Action'])) {
+    if ($_POST['Post_VI_Action'] == $_SESSION['Post_Code']) {   
     $links_file = $_POST['file'];
     $links_state = 'publish';
     $links_title = trim($_POST['title']);
     $links_content = trim($_POST['content']);
-    $links_date = date("Y-m-d");
-    $links_time = date("H:i:s");
+    $links_date = date("Y/m-d");
+    $links_time = date("H:i");
     if ($_POST['state'] == 'draft') {
         unset($links_state);
         $links_state = 'draft';
@@ -32,13 +32,7 @@ if (isset($_POST['Post_VI_Action'])) {
     }else {
         $links_path = $_POST['path'];
     }
-    if ($_POST['year'] != '') $links_date = substr_replace($links_date, $_POST['year'], 0, 4);
-    if ($_POST['month'] != '') $links_date = substr_replace($links_date, $_POST['month'], 5, 2);
-    if ($_POST['day'] != '') $links_date = substr_replace($links_date, $_POST['day'], 8, 2);
-    if ($_POST['hourse'] != '') $links_time = substr_replace($links_time, $_POST['hourse'], 0, 2);
-    if ($_POST['minute'] != '') $links_time = substr_replace($links_time, $_POST['minute'], 3, 2);
-    if ($_POST['second'] != '') $links_time = substr_replace($links_time, $_POST['second'], 6, 2);
-    $links_path_part = explode('/', $links_path);
+  $links_path_part = explode('/', $links_path);
     $links_path_count = count($links_path_part);
     for ($i = 0; $i < $links_path_count; $i++) {
         $trim = trim($links_path_part[$i]);
@@ -93,6 +87,10 @@ if (isset($_POST['Post_VI_Action'])) {
         $data['content'] = $links_content;
         file_put_contents($file_path, serialize($data));
         $succeed = true;
+    }
+               unset($_SESSION["Post_Code"]);  
+    }else{
+        echo "<script language=javascript>alert('请不重复刷新页面！(Please,don\'t！)');window.location='/Root/Links.php'</script>";
     }
 } else if (isset($_GET['file'])) {
     $file_path = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Data/' . $_GET['file'] . '.Mark';

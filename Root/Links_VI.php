@@ -7,13 +7,15 @@
 */
 include 'Head.php';
 include 'Action/Root_LinksVI_Action.php';
+$Post_Code = mt_rand(0,1000000);
+$_SESSION['Post_Code'] = $Post_Code;
  ?>
     <div class="span9">
      <div id="content">
     <div id="content_box">
     <form action="<?php
 echo $_SERVER['REQUEST_URI']; ?>" method="post">
-  <input type="hidden" name="Post_VI_Action" value=""/>
+  <input type="hidden" name="Post_VI_Action" value="<?php echo $Post_Code;?>"/>
   <?php if ($succeed) {  if ($links_state == 'publish') { ?>
   <div class="updated">链接添加成功。</div>
   <?php } else { ?>
@@ -39,62 +41,14 @@ echo $_SERVER['REQUEST_URI']; ?>" method="post">
     <input type="hidden" name="file" value="<?php echo $links_file; ?>"/>
     <input type="submit" name="save" value="修改" style="padding:6px 20px;"/><br />
     <?php } if ($links_title != '') { ?>
-    <div style="float:left">
+   <div style="float:left">
     添加时间：
-    <select name="year">
-      <option value=""></option>
-<?php $Y_Time = date('Y', time());
-    $year = substr($links_date, 0, 4);
-    for ($i = 2014; $i <= $Y_Time; $i++) { ?>
-      <option value="<?php  echo $i; ?>" <?php if ($year == $i) echo 'selected="selected";' ?>>
-      <?php echo $i; ?></option>
-<?php  } ?>
+    <select name="Year_date">
+      <option value="<?php echo htmlspecialchars($links_date);?>"><?php echo htmlspecialchars($links_date);?></option>
     </select> -
-    <select name="month">
-      <option value=""></option>
-<?php    $month = substr($links_date, 5, 2);
-    for ($i = 1; $i <= 12; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php echo $m; ?>" <?php if ($month == $m) echo 'selected="selected";' ?>>
-      <?php echo $m; ?></option>
-<?php } ?>
-    </select> -
-    <select name="day">
-      <option value=""></option>
-<?php $day = substr($links_date, 8, 2);
-    for ($i = 1; $i <= 31; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php echo $m; ?>" <?php if ($day == $m) echo 'selected="selected";' ?>>
-      <?php echo $m; ?></option>
-<?php  } ?>
-    </select>&nbsp;
-    <select name="hourse">
-      <option value=""></option>
-<?php  $hourse = substr($links_time, 0, 2);
-    for ($i = 0; $i <= 23; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php echo $m; ?>" <?php if ($hourse == $m) echo 'selected="selected";' ?>>
-      <?php echo $m; ?></option>
-<?php } ?>
-    </select> :
-    <select name="minute">
-      <option value=""></option>
-<?php $minute = substr($links_time, 3, 2);
-    for ($i = 0; $i <= 59; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php  echo $m; ?>" <?php if ($minute == $m) echo 'selected="selected";' ?>>
-      <?php echo $m; ?></option>
-<?php    } ?>
-    </select> :
-    <select name="second">
-      <option value=""></option>
-<?php $second = substr($links_time, 6, 2);
-    for ($i = 0; $i <= 59; $i++) {
-        $m = sprintf("%02d", $i); ?>
-      <option value="<?php  echo $m; ?>" <?php  if ($second == $m) echo 'selected="selected";' ?>>
-      <?php  echo $m; ?></option>
-<?php  } ?>
-    </select>
+    <select name="Year_time">
+      <option value="<?php echo htmlspecialchars($links_time);?>"><?php echo htmlspecialchars($links_time);?></option>
+    </select> 
     </div>
     <?php } if ($links_title != '') { ?>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

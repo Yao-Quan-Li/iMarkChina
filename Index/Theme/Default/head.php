@@ -15,6 +15,12 @@
 <meta name="description" content="<?php if ($Mark_Url_Action == ""){Mark_Site_Desc();}else{Mark_The_Des();} ?>" />
 <link rel="shortcut icon" type="image/x-icon" href="<?php __Index__('Public/Images/favicon.ico');?>" />
 <link type="text/css" rel="stylesheet" href="<?php __Index__('Default/Css/styel.css');?>"/>
-<link rel="stylesheet" href="<?php __Index__('Public/Css/prettify.css');?>">
-<script type="text/javascript" src="<?php __Index__('Public/Js/prettify.js');?>"></script>
+<script src="<?php __Index__('Public/Js/jquery-1.10.1.code.js');?>"></script>
+<script src="<?php __Index__('Public/Js/code.js');?>"></script>
+<link rel="stylesheet" href="<?php __Index__('Public/Css/code.css');?>" type="text/css" rel="stylesheet"/>
+<script>
+$(document).ready(function() {
+  hljs.initHighlightingOnLoad();
+});
+</script>
 </head>

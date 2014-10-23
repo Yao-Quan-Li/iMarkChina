@@ -7,7 +7,7 @@
 */
 include 'header.php';
 ?>
-<body onload="prettyPrint()">
+<body>
 <?php include 'top.php';?>
 <div id="main">
 	<?php if (Mark_Is_Post()) { ?>
