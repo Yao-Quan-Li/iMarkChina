@@ -10,7 +10,7 @@ include 'Root_Hackdone_Action.php';
 if (!is_dir($_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Post/Data/'))
     mkdir($_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Post/Data/', 0777);
 function load_posts()
-{
+{ 
     global $state, $index_file, $Mark_Posts_Action;
     if (isset($_GET['state'])) {
         if ($_GET['state'] == 'draft') {

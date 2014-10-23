@@ -5,7 +5,7 @@
 *Links:http://www.imarkchina.cn.
 *Date:2014.
 */
-?>
+?> 
 <div class="g-hd">
   <h1 class="m-ttl">
   <a href="/"><?php Mark_Site_Name();?> </a>

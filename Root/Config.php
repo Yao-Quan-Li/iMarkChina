@@ -7,7 +7,7 @@
 */
 include 'Head.php';
 include 'Action/Root_Config_Action.php';
- ?>
+ ?> 
     <div class="span9">
      <div id="content">
     <div id="content_box">

@@ -4,7 +4,7 @@
 *Links:http://www.liyaoquan.cn.
 *Links:http://www.imarkchina.cn.
 *Date:2014.
-*/
+*/ 
 header("Content-Type: application/xml"); 
 ?>
 <?php echo '<?xml version="1.0" encoding="UTF-8" ?>'; ?>

@@ -7,7 +7,7 @@
 */
 include 'Head.php';
 include 'Action/Root_Post_Action.php';
-?>
+?> 
 <script type="text/javascript">
 function do_filter()
 {

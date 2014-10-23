@@ -4,7 +4,7 @@
 *Links:http://www.liyaoquan.cn.
 *Links:http://www.imarkchina.cn.
 *Date:2014.
-*/
+*/ 
 include_once 'Index_Code_Action.php';
 $Mark_PageNum_Action = $Mark_Config_Action['site_mumber'];
 $Mark_Url_Action = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';

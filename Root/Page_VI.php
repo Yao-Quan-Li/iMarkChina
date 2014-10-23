@@ -10,8 +10,7 @@ include 'Action/Root_PageVI_Action.php';
 $Post_Code = mt_rand(0,1000000);
 $_SESSION['Post_Code'] = $Post_Code;
  ?>
-
-    <div class="span9">
+<div class="span9">
      <div id="content">
     <div id="content_box">
     <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">

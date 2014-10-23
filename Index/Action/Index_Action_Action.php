@@ -12,7 +12,7 @@ function Mark_Site_Name($Mark_P = true) {
     if ($Mark_P) {
         echo $site_name;
         return;
-    }
+    } 
     return $site_name;
 }
 function Mark_Site_Name_Two() {

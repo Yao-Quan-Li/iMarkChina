@@ -4,7 +4,7 @@
 *Links:http://www.liyaoquan.cn.
 *Links:http://www.imarkchina.cn.
 *Date:2014.
-*/
+*/ 
 include 'head.php'; ?>
 <body class="p-homepage">
 <div class="g-doc box">

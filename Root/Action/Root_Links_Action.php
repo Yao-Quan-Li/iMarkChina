@@ -4,7 +4,7 @@
 *Links:http://www.liyaoquan.cn.
 *Links:http://www.imarkchina.cn.
 *Date:2014.
-*/
+*/ 
 session_start();
 include 'Root_Hackdone_Action.php';
 if (!is_dir($_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Data/')) mkdir($_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Data/',0777);
@@ -29,29 +29,29 @@ function load_pages() {
 }
 function delete_page($id) {
     global $state, $index_file, $Mark_Links_Action;
-    $page = $Mark_Links_Action[$id];
-    $page['prev_state'] = $state;
+    $links = $Mark_Links_Action[$id];
+    $links['prev_state'] = $state;
     unset($Mark_Links_Action[$id]);
     file_put_contents($index_file, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");
     if ($state != 'delete') {
         $index_file2 = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Index/delete.php';
         require $index_file2;
-        $Mark_Links_Action[$id] = $page;
+        $Mark_Links_Action[$id] = $links;
         file_put_contents($index_file2, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");
     } else {
-        unlink($_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Data/' . $page['file'] . '.Mark');
+        unlink($_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Data/' . $links['file'] . '.Mark');
     }
 }
 function revert_page($id) {
     global $state, $index_file, $Mark_Links_Action;
-    $page = $Mark_Links_Action[$id];
-    $prev_state = $page['prev_state'];
-    unset($page['prev_state']);
+    $links = $Mark_Links_Action[$id];
+    $prev_state = $links['prev_state'];
+    unset($links['prev_state']);
     unset($Mark_Links_Action[$id]);
     file_put_contents($index_file, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");
     $index_file2 = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Index/' . $prev_state . '.php';
     require $index_file2;
-    $Mark_Links_Action[$id] = $page;
+    $Mark_Links_Action[$id] = $links;
     ksort($Mark_Links_Action);
     file_put_contents($index_file2, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");
 }
@@ -92,8 +92,8 @@ $Links_count = count($Links_ids);
 $date_array = array();
 for ($i = $Links_count - 1; $i >= 0; $i--) {
     $Links_id = $Links_ids[$i];
-    $page = $Mark_Links_Action[$Links_id];
-    $date_array[] = substr($page['date'], 0, 7);
+    $links = $Mark_Links_Action[$Links_id];
+    $date_array[] = substr($links['date'], 0, 7);
 }
 $date_array = array_unique($date_array);
 if (isset($_GET['date'])) $filter_date = $_GET['date'];
@@ -101,9 +101,9 @@ else $filter_date = '';
 $Mark_Links_Action2 = array();
 for ($i = 0; $i < $Links_count; $i++) {
     $Links_id = $Links_ids[$i];
-    $page = $Mark_Links_Action[$Links_id];
-    if ($filter_date != '' && strpos($page['date'], $filter_date) !== 0) continue;
-    $Mark_Links_Action2[$Links_id] = $page;
+    $links = $Mark_Links_Action[$Links_id];
+    if ($filter_date != '' && strpos($links['date'], $filter_date) !== 0) continue;
+    $Mark_Links_Action2[$Links_id] = $links;
 }
 $Mark_Links_Action = $Mark_Links_Action2;
 $Links_ids = array_keys($Mark_Links_Action);

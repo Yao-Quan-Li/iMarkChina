@@ -4,31 +4,34 @@
 *Links:http://www.liyaoquan.cn.
 *Links:http://www.imarkchina.cn.
 *Date:2014.
-*/
+*/ 
 session_start();
 include 'Root_Hackdone_Action.php';
 $links_file = '';
+$links_path = '';
 $links_state = '';
 $links_title = '';
 $links_content = '';
 $links_date = '';
 $links_time = '';
+$links_can_comment = '';
 $succeed = false;
 date_default_timezone_set('PRC');
 if (isset($_POST['Post_VI_Action'])) {
-    if ($_POST['Post_VI_Action'] == $_SESSION['Post_Code']) {   
+    if ($_POST['Post_VI_Action'] == $_SESSION['Post_Code']) {    
     $links_file = $_POST['file'];
     $links_state = 'publish';
     $links_title = trim($_POST['title']);
-    $links_content = trim($_POST['content']);
+    $links_content = get_magic_quotes_gpc() ? stripslashes(trim($_POST['content'])) : trim($_POST['content']);;
     $links_date = date("Y-m-d");
     $links_time = date("H:i");
+    $links_url = $links_content;
     if ($_POST['state'] == 'draft') {
         unset($links_state);
         $links_state = 'draft';
     }
     if ($_POST['path'] == ''){
-        $links_path = 'Mark' . RandCode(3, 0);
+        $links_path = RandCode(6, 0);
     }else {
         $links_path = $_POST['path'];
     }
@@ -37,7 +40,7 @@ if (isset($_POST['Post_VI_Action'])) {
     if ($_POST['day'] != '') $links_date = substr_replace($links_date, $_POST['day'], 8, 2);
     if ($_POST['hourse'] != '') $links_time = substr_replace($links_time, $_POST['hourse'], 0, 2);
     if ($_POST['minute'] != '') $links_time = substr_replace($links_time, $_POST['minute'], 3, 2);
-  $links_path_part = explode('/', $links_path);
+   $links_path_part = explode('/', $links_path);
     $links_path_count = count($links_path_part);
     for ($i = 0; $i < $links_path_count; $i++) {
         $trim = trim($links_path_part[$i]);
@@ -52,8 +55,8 @@ if (isset($_POST['Post_VI_Action'])) {
     if ($links_title == '') {
         $error_msg = 'Oh,Shit !!! 标题空了';
     } elseif ($links_content == '') {
-        $error_msg = 'Oh,Shit !!! 链接空了';
-    }else{
+        $error_msg = 'Oh,Shit !!! 链接空了';        
+    }else {
         if ($links_file == '') {
             $file_names = ShortUrl($links_title);
             foreach ($file_names as $file_name) {
@@ -74,7 +77,7 @@ if (isset($_POST['Post_VI_Action'])) {
                 unset($Mark_Links_Action[$links_old_path]);
                 file_put_contents($index_file, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");
             }
-        }
+        } 
         $data = array(
             'file' => $links_file,
             'path' => $links_path,
@@ -82,7 +85,7 @@ if (isset($_POST['Post_VI_Action'])) {
             'title' => $links_title,
             'date' => $links_date,
             'time' => $links_time,
-            'content' => $links_content,
+            'url'    => $links_url,
         );
         $index_file = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Index/' . $links_state . '.php';
         require $index_file;
@@ -92,8 +95,8 @@ if (isset($_POST['Post_VI_Action'])) {
         $data['content'] = $links_content;
         file_put_contents($file_path, serialize($data));
         $succeed = true;
-    }
-               unset($_SESSION["Post_Code"]);  
+            }
+           unset($_SESSION["Post_Code"]);  
     }else{
         echo "<script language=javascript>alert('请不重复刷新页面！(Please,don\'t！)');window.location='/Root/Links.php'</script>";
     }

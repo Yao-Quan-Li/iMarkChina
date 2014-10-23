@@ -10,8 +10,8 @@ $Mark_Posts_Action=array (
       0 => 'hello',
       1 => 'world',
     ),
-    'date' => '2014-10-20',
-    'time' => '18:05:34',
+    'date' => '2014-10-24',
+    'time' => '00:00',
     'can_comment' => '1',
   ),
 )

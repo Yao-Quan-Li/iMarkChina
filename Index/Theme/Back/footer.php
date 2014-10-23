@@ -4,7 +4,7 @@
 *Links:http://www.liyaoquan.cn.
 *Links:http://www.imarkchina.cn.
 *Date:2014.
-*/?>
+*/?> 
 <div class="bottom">
 	<p>© CopyRight  2014 | <?php Year(); ?><?php Copy_Right(); ?> | <a href="#">Top</a></p>
 </div>

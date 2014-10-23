@@ -14,7 +14,7 @@ function Mark_search_Submit(){
       		     <input type="submit" value="Search" />
     		     </form>';
    	echo $search;
-}
+} 
 function Mark_404() {
     header('HTTP/1.0 404 Not Found');
     echo "<title>404 Not Found</title>";

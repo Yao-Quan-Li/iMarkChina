@@ -50,11 +50,11 @@ echo $filter_date; ?>&page=' + eventSrc.value;
     </tr>
   </thead>
   <tbody>
-  <?php for ($i = 0; $i < $Links_count; $i++) {if ($i < ($Links_num - 1) * 10 || $i >= ($Links_num * 10)) continue;$Links_id = $Links_ids[$i];$page = $Mark_Links_Action[$Links_id]; ?>
+  <?php for ($i = 0; $i < $Links_count; $i++) {if ($i < ($Links_num - 1) * 10 || $i >= ($Links_num * 10)) continue;$Links_id = $Links_ids[$i];$links = $Mark_Links_Action[$Links_id]; ?>
     <tr<?php if ($i % 2 == 0) echo ' class="alt"'; ?>> <td></td><td>
-<a class="row_name" href="Links_VI.php?file=<?php echo $page['file']; ?>"><?php echo htmlspecialchars($page['title']); ?></a>
+<a class="row_name" href="Links_VI.php?file=<?php echo $links['file']; ?>"><?php echo htmlspecialchars($links['title']); ?></a>
         <div class="row_tool">
-          <a class="link_button" href="Links_VI.php?file=<?php echo $page['file']; ?>">编辑</a>
+          <a class="link_button" href="Links_VI.php?file=<?php echo $links['file']; ?>">编辑</a>
           <?php if ($state == 'delete') { ?>
           <a class="link_button" href="?revert=<?php echo $Links_id; ?>&state=<?php echo $state; ?>&date=<?php echo $filter_date; ?>">还原</a>
           <a class="link_button" href="?delete=<?php echo $Links_id; ?>&state=<?php echo $state; ?>&date=<?php echo $filter_date; ?>">删除</a>
@@ -63,8 +63,8 @@ echo $filter_date; ?>&page=' + eventSrc.value;
           <?php } ?>
         </div>
       </td>
-      <td><a href="<?php echo htmlspecialchars($page['content']); ?>"  target="_blank"><?php echo htmlspecialchars($page['content']); ?></a></td>
-      <td><?php echo htmlspecialchars($page['date']); ?></td>
+      <td><a href="<?php echo htmlspecialchars($links['url']); ?>"  target="_blank"><?php echo htmlspecialchars($links['url']); ?></a></td>
+      <td><?php echo htmlspecialchars($links['date']); ?></td>
     </tr>
   <?php } ?>
   </tbody>
@@ -99,4 +99,4 @@ echo $filter_date; ?>&page=' + eventSrc.value;
   <?php include 'Footer.php';?>
 </div>
 </body>
-</html>
+</html> 

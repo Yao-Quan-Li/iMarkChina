@@ -4,7 +4,7 @@
 *Links:http://www.liyaoquan.cn.
 *Links:http://www.imarkchina.cn.
 *Date:2014.
-*/
+*/ 
  if (!isset($Mark_Config_Action)) exit;?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -4,7 +4,7 @@
 *Links:http://www.liyaoquan.cn.
 *Links:http://www.imarkchina.cn.
 *Date:2014.
-*/
+*/ 
 if (!isset($_SESSION['Mark_Login'])) {
     echo "<title>How crazy is it?</title>";
     echo "<meta charset=\"UTF-8\" />";

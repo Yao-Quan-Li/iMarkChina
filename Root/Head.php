@@ -9,7 +9,7 @@ session_start();
 error_reporting(E_ALL ^ E_NOTICE);
 include $_SERVER['DOCUMENT_ROOT'] . '/Public/Resources/Config.php';
 include 'Action/Root_Hackdone_Action.php';
-?>
+?> 
 <!DOCTYPE html>
 <!--[if lt IE 7 ]>
 <html lang="en" class="ie6 ielt7 ielt8 ielt9">

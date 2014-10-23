@@ -4,7 +4,7 @@
 *Links:http://www.liyaoquan.cn.
 *Links:http://www.imarkchina.cn.
 *Date:2014.
-*/
+*/ 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/Index/Action/Index_Config_Action.php';
 function __ROOT__($abc) {
     global $Mark_Config_Action;

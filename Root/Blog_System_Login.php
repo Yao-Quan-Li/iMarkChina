@@ -13,7 +13,7 @@ if (isset($_SESSION['Mark_Login'])) {
 	header("Location:/".$link."/index.php"); //重新定向到其他页面
     	exit();
 }
-?>
+?> 
 <!DOCTYPE html>
 <!--[if lt IE 7 ]>
 <html lang="en" class="ie6 ielt7 ielt8 ielt9">

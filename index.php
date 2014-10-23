@@ -6,4 +6,4 @@
 *Date:2014.
 */
 	include './Index/Action/Index_Index_Action.php';
-?>
+?> 
