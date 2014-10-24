@@ -6,10 +6,13 @@
 	rewrite ^/(.*).html$ /?$1/;
 	rewrite ^/date-(.*)/$ /?date/$1/;
 	rewrite ^/tag-(.*)/$ /?tag/$1/;
-    }
+	rewrite ^/page-(.*)$ /?page=$1;
+	rewrite ^/tag-(.*)/page-(.*)$ /?tag/$1/?page=$2;
+	rewrite ^/date-(.*)/page-(.*)$ /?date/$1/?page=$2;
+}
 
    添加完后，重启Nginx  service nginx restart 
-     
+
    重启前前使用命令检查一下有错误没  nginx -t 
 
    看到ok 再重启Nginx！

@@ -8,13 +8,6 @@
 error_reporting(E_ALL ^ E_NOTICE);
 include_once 'Index_Config_Action.php';
 include_once 'Index_Action_Action.php';
-function Mark_search_Submit(){
-	$search  = '<form  action="/?search/" method="post">
-      		     <input style="width:130px;height:25px"  type="text" name="keyword" />
-      		     <input type="submit" value="Search" />
-    		     </form>';
-   	echo $search;
-} 
 function Mark_404() {
     header('HTTP/1.0 404 Not Found');
     echo "<title>404 Not Found</title>";

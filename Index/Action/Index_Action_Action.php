@@ -17,8 +17,7 @@ function Mark_Site_Name($Mark_P = true) {
 }
 function Mark_Site_Name_Two() {
     global $Mark_Config_Action;
-    $site_name_two = htmlspecialchars($Mark_Config_Action['nametwo']);
-    echo $site_name_two;
+   echo  htmlspecialchars($Mark_Config_Action['nametwo']);
 }
 function Mark_Site_Key($Mark_P = true) {
     global $Mark_Config_Action;
@@ -112,66 +111,46 @@ function Mark_Has_Old() {
 function Mark_Goto_Old($text) {
     global $Mark_Get_Type_Action, $Mark_Get_Name_Action, $Mark_Page_Num_Action, $Mark_Config_Action;
     if ($Mark_Get_Type_Action == 'tag') {
-        echo '<a href="';
-        echo $Mark_Config_Action['site_link'];
-        echo '/?tag/';
-        echo $Mark_Get_Name_Action;
-        echo '/?page=';
-        echo ($Mark_Page_Num_Action + 1);
-        echo '">';
-        echo $text;
-        echo '</a>';
-    }elseif ($Mark_Get_Type_Action == 'date') {
-        echo '<a href="';
-        echo $Mark_Config_Action['site_link'];
-        echo '/?date/';
-        echo $Mark_Get_Name_Action;
-        echo '/?page=';
-        echo ($Mark_Page_Num_Action + 1);
-        echo '">';
-        echo $text;
-        echo '</a>';
-    }else {
-        echo '<a href="';
-        echo $Mark_Config_Action['site_link'];
-        echo '/?page=';
-        echo ($Mark_Page_Num_Action + 1);
-        echo '">';
-        echo $text;
-        echo '</a>';
+        if ($Mark_Config_Action['write'] == 'open') {
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/tag-'.$Mark_Get_Name_Action.'/page-'.($Mark_Page_Num_Action + 1).'">'.$text.'</a>';
+        }else{
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/?tag/'.$Mark_Get_Name_Action.'/?page='.($Mark_Page_Num_Action + 1). '">'.$text.'</a>';
     }
+    }elseif ($Mark_Get_Type_Action == 'date') {
+        if ($Mark_Config_Action['write'] =='open') {
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/date-'.$Mark_Get_Name_Action.'/page-'.($Mark_Page_Num_Action + 1).'">'.$text.'</a>';
+        }else{
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/?date/'.$Mark_Get_Name_Action.'/?page='.($Mark_Page_Num_Action + 1).'">'.$text.'</a>';
+    }
+    }else {
+       if ($Mark_Config_Action['write'] == 'open') {
+         echo '<a href="'.$Mark_Config_Action['site_link'].'/page-'.($Mark_Page_Num_Action + 1).'">'.$text.'</a>';
+        }else{
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/?page='.($Mark_Page_Num_Action + 1).'">'.$text.'</a>';
+    }
+}
 }
 function Mark_Goto_New($text) {
     global $Mark_Get_Type_Action, $Mark_Get_Name_Action, $Mark_Page_Num_Action, $Mark_Config_Action;
     if ($Mark_Get_Type_Action == 'tag') {
-        echo '<a href="';
-        echo $Mark_Config_Action['site_link'];
-        echo '/?tag/';
-        echo $Mark_Get_Name_Action;
-        echo '/?page=';
-        echo ($Mark_Page_Num_Action - 1);
-        echo '">';
-        echo $text;
-        echo '</a>';
-    }elseif ($Mark_Get_Type_Action == 'date') {
-        echo '<a href="';
-        echo $Mark_Config_Action['site_link'];
-        echo '/?date/';
-        echo $Mark_Get_Name_Action;
-        echo '/?page=';
-        echo ($Mark_Page_Num_Action - 1);
-        echo '">';
-        echo $text;
-        echo '</a>';
-    }else {
-        echo '<a href="';
-        echo $Mark_Config_Action['site_link'];
-        echo '/?page=';
-        echo ($Mark_Page_Num_Action - 1);
-        echo '">';
-        echo $text;
-        echo '</a>';
+        if ($Mark_Config_Action['write'] == 'open') {
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/tag-'.$Mark_Get_Name_Action.'/page-'.($Mark_Page_Num_Action - 1).'">'.$text.'</a>';
+        }else{
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/?tag/'.$Mark_Get_Name_Action.'/?page='.($Mark_Page_Num_Action - 1). '">'.$text.'</a>';
     }
+    }elseif ($Mark_Get_Type_Action == 'date') {
+         if ($Mark_Config_Action['write'] =='open') {
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/date-'.$Mark_Get_Name_Action.'/page-'.($Mark_Page_Num_Action - 1).'">'.$text.'</a>';
+        }else{
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/?date/'.$Mark_Get_Name_Action.'/?page='.($Mark_Page_Num_Action - 1).'">'.$text.'</a>';
+    }
+    }else {
+           if ($Mark_Config_Action['write'] == 'open') {
+         echo '<a href="'.$Mark_Config_Action['site_link'].'/page-'.($Mark_Page_Num_Action - 1).'">'.$text.'</a>';
+        }else{
+        echo '<a href="'.$Mark_Config_Action['site_link'].'/?page='.($Mark_Page_Num_Action - 1).'">'.$text.'</a>';
+    }
+}
 }
 function Mark_Date_List($item_gap = '') {
     global $Mark_Dates_Action, $Mark_Config_Action;
@@ -184,8 +163,6 @@ function Mark_Date_List($item_gap = '') {
             }else{
                  echo '<a href="'.$Mark_Config_Action['site_link'].'/?date/'.$date.'/">'.$date. '</a>&nbsp&nbsp&nbsp&nbsp';
             }
-           
-            
             if ($i < $date_count - 1) echo $item_gap;
         }
     }
@@ -197,23 +174,9 @@ function Mark_Tag_List($item_gap = '', $item_end = '&nbsp&nbsp&nbsp&nbsp') {
         for ($i = 0; $i < $tag_count; $i++) {
             $tag = $Mark_Tag_Action[$i];
             if ($Mark_Config_Action['write'] == 'open') {
-            echo '<a href="';
-            echo $Mark_Config_Action['site_link'];
-            echo '/tag-';
-            echo urlencode($tag);
-            echo '/">';
-            echo htmlspecialchars($tag);
-            echo '</a>';
-            echo $item_end;
+            echo '<a href="'.$Mark_Config_Action['site_link'].'/tag-'.urlencode($tag).'/">'.htmlspecialchars($tag).'</a>'.$item_end;
             }else{
-            echo '<a href="';
-            echo $Mark_Config_Action['site_link'];
-            echo '/?tag/';
-            echo urlencode($tag);
-            echo '/">';
-            echo htmlspecialchars($tag);
-            echo '</a>';
-            echo $item_end;
+            echo '<a href="'.$Mark_Config_Action['site_link'].'/?tag/'.urlencode($tag).'/">'.htmlspecialchars($tag).'</a>'.$item_end;
             }
             if ($i < $tag_count - 1) echo $item_gap;
         }
@@ -264,13 +227,10 @@ function Mark_The_Tags($item_begin = '', $item_gap = ', ', $item_end = '', $as_l
     $count = count($tags);
     for ($i = 0; $i < $count; $i++) {
         $tag = htmlspecialchars($tags[$i]);
-        echo $item_begin;
+        if ($Mark_Config_Action['write'] == 'open') {
+         echo $item_begin;
         if ($as_link) {
-            echo '<a href="';
-            echo $Mark_Config_Action['site_link'];
-            echo '/?tag/';
-            echo urlencode($tag);
-            echo '/">';
+            echo '<a href="'.$Mark_Config_Action['site_link'].'/tag-'.urlencode($tag).'/">';
         }
         echo $tag;
         if ($as_link) {
@@ -278,6 +238,19 @@ function Mark_The_Tags($item_begin = '', $item_gap = ', ', $item_end = '', $as_l
         }
         echo $item_end;
         if ($i < $count - 1) echo $item_gap;
+        }else{
+        echo $item_begin;
+        if ($as_link) {
+            echo '<a href="'.$Mark_Config_Action['site_link'].'/?tag/'.urlencode($tag).'/">';
+        }
+        echo $tag;
+        if ($as_link) {
+            echo '</a>';
+        }
+        echo $item_end;
+        if ($i < $count - 1) echo $item_gap;
+        }
+
     }
 }
 function Mark_The_Content($Mark_P = true) {
@@ -315,9 +288,7 @@ function Mark_The_Link() {
     global $Mark_Post_Id_Action, $Mark_Post_Action, $Mark_Config_Action;
     echo '<a href="';
     Mark_The_Url();
-    echo '">';
-    echo htmlspecialchars($Mark_Post_Action['title']);
-    echo '</a>';
+    echo '">'.htmlspecialchars($Mark_Post_Action['title']).'</a>';
 }
 function Mark_The_Url($Mark_P = true) {
     global $Mark_Post_Id_Action, $Mark_Post_Action, $Mark_Config_Action;

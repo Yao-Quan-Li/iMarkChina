@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="<?php __Index__('Back/Css/back.css');?>" />
 <script src="<?php __Index__('Public/Js/jquery-1.10.1.code.js');?>"></script>
 <script src="<?php __Index__('Public/Js/code.js');?>"></script>
-<link rel="stylesheet" href="<?php __Index__('Public/Css/code.css');?>" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" href="<?php __Index__('Public/Css/code.css');?>" type="text/css"/>
 <script>
 $(document).ready(function() {
   hljs.initHighlightingOnLoad();
