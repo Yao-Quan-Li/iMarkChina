@@ -24,7 +24,7 @@
 			<img src="<?php __Index__('Public/Images/contacts.png')?>" width="17" height="17" />
 			<a class="cmt" href="#">By: <?php Mark_Nick_Name(); ?></a>
 			<a href="#" class="cc cc_1" title=" 署名-非商业性使用-禁止演绎 3.0">&nbsp;</a>
-			日志固定链接: <?php echo '<a href="'.$Mark_Config_Action['site_link'].'/?'.$_SERVER['QUERY_STRING'].'">'.$Mark_Config_Action['site_link'].'/?'.$_SERVER['QUERY_STRING'].'</a>';?>
+			日志固定链接: <a href="<?php Mark_The_Url(); ?>"><?php Mark_The_Url(); ?></a>
 		</div>
 	</div>
 	<div class="m-pager m-pager-dtl">

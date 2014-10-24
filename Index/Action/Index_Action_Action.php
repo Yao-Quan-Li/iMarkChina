@@ -416,6 +416,5 @@ function Mark_Right($a,$b){
     echo $a.'<a href="/?archive/">归档</a>' .$b;
     echo $a.'<a href="/?rss/" target="_blank">Rss</a>'.$b;
     }
-  
 }
 ?>
