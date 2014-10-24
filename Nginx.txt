@@ -1,0 +1,15 @@
+ location / {
+        #root   /imarkchina.cn;
+        #index  index.php;
+        ##以上两行不需要添加到你的Nginx主机中，只需要添加下面四行！
+	rewrite ^/post-(.*).html$ /?post/$1;
+	rewrite ^/(.*).html$ /?$1/;
+	rewrite ^/date-(.*)/$ /?date/$1/;
+	rewrite ^/tag-(.*)/$ /?tag/$1/;
+    }
+
+   添加完后，重启Nginx  service nginx restart 
+
+   重启前前使用命令检查一下有错误没  nginx -t 
+
+   看到ok 再重启Nginx！
