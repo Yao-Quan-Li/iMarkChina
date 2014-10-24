@@ -12,7 +12,7 @@ $Mark_Config_Action = array (
  <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/cn/"  target="_blank">署名-非商业性使用-禁止演绎 3.0</a>',
   'root_link' => 'Root',
   'site_mumber' => '5',
-  'style' => 'Back',
+  'style' => 'Defaultk',
   'nametwo' => 'i have a dream，i have a big dream.',
   'fdlinks' => 'close',
   'write' => 'close',
