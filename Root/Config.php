@@ -40,6 +40,14 @@ include 'Action/Root_Config_Action.php';
       <?php ShowDir($path);?>
     </select>
     </div>
+        <div class="clear"></div>
+    <div class="field">
+      <div class="label">伪静态</div>
+        <select name="write">
+        <option value="open"<?php if ($write == 'open') echo  ' selected="selected";';?>>开启</option>
+      <option value="close"<?php if ($write == 'close') echo  ' selected="selected";';?>>关闭</option>
+    </select>
+    </div>
     <div class="clear"></div>
     <div class="field">
       <div class="label">友情链接</div>

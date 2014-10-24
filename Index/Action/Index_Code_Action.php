@@ -23,6 +23,7 @@ function Mark_404() {
     exit();
 }
 function Mark_Search_Search(){
+  global $Mark_Config_Action;
 //Time out one min (600);
 set_time_limit("600");
 //Get the keyword;
@@ -99,11 +100,22 @@ $title = htmlspecialchars_decode($title);
 $title = preg_replace("/<(.*?)>/","",$title); 
 //Delete something I don't need,End;
 //Print
-	echo '<a href="/?post/'.$filedir.'" target="_blank" title="'.$title.'">'.$title.'</a>'.'<br>';
-	
+if ($Mark_Config_Action['write'] == 'open') {
+ echo '<a href="/post-'.$filedir.'.html" target="_blank" title="'.$title.'">'.$title.'</a>'.'<br>';
+}else{
+  echo '<a href="/?post/'.$filedir.'" target="_blank" title="'.$title.'">'.$title.'</a>'.'<br>';
+}
 }
 } else {
 	echo 'My apologize,I can\'t find something Information! <br/> (非常抱歉，搜索不到相关信息！ )';
 }
+}
+function Mark_keyword(){
+  global $Mark_Config_Action;
+  if ($Mark_Config_Action['write'] == 'open') {
+    echo '/search.html';
+  }else{
+    echo '/?search/';
+  }
 }
 ?>

@@ -22,6 +22,7 @@ if (isset($_POST['save'])) {
     $Mark_Config_Action['style'] = $_POST['style'];
     $Mark_Config_Action['nametwo'] = $_POST['nametwo'];
     $Mark_Config_Action['fdlinks'] = $_POST['fdlinks'];
+    $Mark_Config_Action['write'] = $_POST['write'];
     $Mark_Config_Action['comment_code'] = get_magic_quotes_gpc() ? stripslashes(trim($_POST['comment_code'])) : trim($_POST['comment_code']);
     if ($_POST['user_pass'] != '') $Mark_Config_Action['user_pass'] = MD5($_POST['user_pass']);
     $code = "<?php\n\$Mark_Config_Action = " . var_export($Mark_Config_Action, true) . "\n?>";
@@ -40,5 +41,6 @@ $site_mumber = $Mark_Config_Action['site_mumber'];
 $style = $Mark_Config_Action['style'];
 $nametwo = $Mark_Config_Action['nametwo'];
 $fdlinks = $Mark_Config_Action['fdlinks'];
+$write =  $Mark_Config_Action['write'];
 $comment_code = isset($Mark_Config_Action['comment_code']) ? $Mark_Config_Action['comment_code'] : '';
 ?>

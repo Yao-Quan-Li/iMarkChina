@@ -179,7 +179,12 @@ function Mark_Date_List($item_gap = '') {
         $date_count = count($Mark_Dates_Action);
         for ($i = 0; $i < $date_count; $i++) {
             $date = $Mark_Dates_Action[$i];
-            echo '<a href="'.$Mark_Config_Action['site_link'].'/?date/'.$date.'/">'.$date. '</a>&nbsp&nbsp&nbsp&nbsp';
+            if ($Mark_Config_Action['write'] == 'open') {
+                echo '<a href="'.$Mark_Config_Action['site_link'].'/date-'.$date.'/">'.$date. '</a>&nbsp&nbsp&nbsp&nbsp';
+            }else{
+                 echo '<a href="'.$Mark_Config_Action['site_link'].'/?date/'.$date.'/">'.$date. '</a>&nbsp&nbsp&nbsp&nbsp';
+            }
+           
             
             if ($i < $date_count - 1) echo $item_gap;
         }
@@ -191,6 +196,16 @@ function Mark_Tag_List($item_gap = '', $item_end = '&nbsp&nbsp&nbsp&nbsp') {
         $tag_count = count($Mark_Tag_Action);
         for ($i = 0; $i < $tag_count; $i++) {
             $tag = $Mark_Tag_Action[$i];
+            if ($Mark_Config_Action['write'] == 'open') {
+            echo '<a href="';
+            echo $Mark_Config_Action['site_link'];
+            echo '/tag-';
+            echo urlencode($tag);
+            echo '/">';
+            echo htmlspecialchars($tag);
+            echo '</a>';
+            echo $item_end;
+            }else{
             echo '<a href="';
             echo $Mark_Config_Action['site_link'];
             echo '/?tag/';
@@ -199,6 +214,7 @@ function Mark_Tag_List($item_gap = '', $item_end = '&nbsp&nbsp&nbsp&nbsp') {
             echo htmlspecialchars($tag);
             echo '</a>';
             echo $item_end;
+            }
             if ($i < $tag_count - 1) echo $item_gap;
         }
     }
@@ -305,12 +321,12 @@ function Mark_The_Link() {
 }
 function Mark_The_Url($Mark_P = true) {
     global $Mark_Post_Id_Action, $Mark_Post_Action, $Mark_Config_Action;
-    $url = $Mark_Config_Action['site_link'] . '/?post/' . $Mark_Post_Id_Action;
-    if ($Mark_P) {
-        echo $url;
-        return;
-    }
-    return $url;
+    if ($Mark_Config_Action['write'] == 'open') {
+     $url = $Mark_Config_Action['site_link'] . '/post-' . $Mark_Post_Id_Action.'.html';
+       }else{
+        $url = $Mark_Config_Action['site_link'] . '/?post/' . $Mark_Post_Id_Action;
+       }
+ echo $url;
 }
 function Mark_Can_Comment() {
     global $Mark_Post_Id_Action, $Mark_Post_Action;
@@ -328,7 +344,7 @@ function Copy_Right(){
 }
 //取所有页面
 function Mark_Pages($a,$b){
-    global $Mark_Pages_Action;
+    global $Mark_Pages_Action,$Mark_Config_Action;
     include $_SERVER[DOCUMENT_ROOT] . '/Index/Data/Page/Index/publish.php';
     $page_ids = array_keys($Mark_Pages_Action);
     $pages_id = count($page_ids);
@@ -339,12 +355,16 @@ function Mark_Pages($a,$b){
     $post = $Mark_Pages_Action[$page_id];
     $page_array = array_merge($page_array, (array)$post['title']);
     $path_array = array_merge($path_array, (array)$post['path']);
-    echo $a.'<a href="/?' . $path_array[$i] . '/">' . $page_array[$i] . '</a>'.$b;
+    if ($Mark_Config_Action['write'] == 'open') {
+         echo $a.'<a href="/' . $path_array[$i] . '.html">' . $page_array[$i] . '</a>'.$b;
+    }else{
+         echo $a.'<a href="/?' . $path_array[$i] . '/">' . $page_array[$i] . '</a>'.$b;
+    }
     }       
 }
 //取最新5篇日志连接
 function Post_Links(){
-    global $Mark_Posts_Action;
+    global $Mark_Posts_Action,$Mark_Config_Action;
     include $_SERVER[DOCUMENT_ROOT] . '/Index/Data/Post/Index/publish.php';
     $page_ids = array_keys($Mark_Posts_Action);
     $pages_id = count($page_ids);
@@ -360,9 +380,15 @@ function Post_Links(){
     if ($i ==5) {
        break;
    }
+   if ($Mark_Config_Action['write'] == 'open') {
+    echo '<li class="note like"> <span class="action">';
+    echo  '<a href="/post-'.$post_link.'.html" title="'.$post_title.'">'.$post_title.'</a>';
+    echo ' </span><div class="clear"></div> </li>';
+   }else{ 
    echo '<li class="note like"> <span class="action">';
     echo  '<a href="/?post/'.$post_link.'" title="'.$post_title.'">'.$post_title.'</a>';
     echo ' </span><div class="clear"></div> </li>';
+}
  }
 }
 //友情链接
@@ -380,5 +406,16 @@ function Mark_Links($a,$b){
     $Links_array = array_merge($Links_array,(array)$post['content']);
     echo $a.'<a href="' . $Links_array[$i] . '" target="_blank">' . $Link_array[$i] . '</a>'.$b;
     }
+}
+function Mark_Right($a,$b){
+    global $Mark_Config_Action;
+    if ($Mark_Config_Action['write'] == 'open') {
+    echo $a.'<a href="/archive.html">归档</a>' .$b;
+    echo $a.'<a href="/rss.html" target="_blank">Rss</a>'.$b;
+    }else{
+    echo $a.'<a href="/?archive/">归档</a>' .$b;
+    echo $a.'<a href="/?rss/" target="_blank">Rss</a>'.$b;
+    }
+  
 }
 ?>
