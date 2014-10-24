@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On 
+RewriteBase / 
+RewriteRule ^post-(.*).html$ /?post/$1
+RewriteRule ^(.*).html$ /?$1/
+RewriteRule ^date-(.*)/$ /?date/$1/
+RewriteRule ^tag-(.*)/$  /?tag/$1/
+</IfModule>
