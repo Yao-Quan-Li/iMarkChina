@@ -14,10 +14,10 @@ $Mark_Config_Action = array (
   'copy_right' => '<a href="http://www.imarkchina.cn/" title="iMarkChina" target="_blank">iMarkChina</a> |
  <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/cn/"  target="_blank">署名-非商业性使用-禁止演绎 3.0</a>',
   'root_link' => 'Root',
-  'site_mumber' => '2',
+  'site_mumber' => '5',
   'style' => 'Default',
   'nametwo' => 'i have a dream，i have a big dream.',
   'fdlinks' => 'close',
-  'write' => 'open',
+  'write' => 'close',
 )
 ?>
