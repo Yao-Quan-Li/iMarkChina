@@ -9,7 +9,7 @@
     }
 
    添加完后，重启Nginx  service nginx restart 
- 
+     
    重启前前使用命令检查一下有错误没  nginx -t 
 
    看到ok 再重启Nginx！
