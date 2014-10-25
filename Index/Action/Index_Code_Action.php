@@ -9,10 +9,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 include_once 'Index_Config_Action.php';
 include_once 'Index_Action_Action.php';
 function Mark_404() {
-    header('HTTP/1.0 404 Not Found');
-    echo "<title>404 Not Found</title>";
-    echo "<h1>404 Not Found</h1>";
-    echo "Oh,Shit ! Where are they go?.";
+    include_once $_SERVER['DOCUMENT_ROOT'].'/Public/Resources/404.php';
     exit();
 }
 function Mark_Search_Search(){
@@ -100,7 +97,7 @@ if ($Mark_Config_Action['write'] == 'open') {
 }
 }
 } else {
-	echo 'My apologize,I can\'t find something Information! <br/> (非常抱歉，搜索不到相关信息！ )';
+    echo 'My apologize,I can\'t find something Information! <br/> (非常抱歉，搜索不到相关信息！ )';
 }
 }
 function Mark_keyword(){

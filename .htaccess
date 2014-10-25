@@ -8,4 +8,5 @@ RewriteRule ^tag-(.*)/$  /?tag/$1/
 RewriteRule ^page-(.*)$  /?page=$1
 RewriteRule ^tag-(.*)/page-(.*)$  /?tag/$1/?page=$2
 RewriteRule ^date-(.*)/page-(.*)$  /?date/$1/?page=$2
+ErrorDocument 404 /Public/Resources/404.php
 </IfModule>

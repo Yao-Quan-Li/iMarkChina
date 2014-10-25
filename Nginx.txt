@@ -9,7 +9,7 @@
 	rewrite ^/page-(.*)$ /?page=$1;
 	rewrite ^/tag-(.*)/page-(.*)$ /?tag/$1/?page=$2;
 	rewrite ^/date-(.*)/page-(.*)$ /?date/$1/?page=$2;
-}
+}}
 
    添加完后，重启Nginx  service nginx restart 
 

@@ -109,7 +109,6 @@ include 'Action/Root_Config_Action.php';
     <div class="clear"></div>
     <div class="field">
       <div class="label"></div>
-      <a href="#">Top</a>
       <div class="info"></div>
     </div>
     <div class="clear"></div>
