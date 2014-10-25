@@ -1,7 +1,7 @@
 <?php
 /*!
  * upload demo for php
- * @requires xhEditor
+ * @includes xhEditor
  * 
  * @author Yanis.Wang<yanis.wang@gmail.com>
  * @site http://xheditor.com/

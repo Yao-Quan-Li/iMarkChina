@@ -25,7 +25,7 @@ function load_pages() {
         $state = 'publish';
         $index_file = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Index/publish.php';
     }
-    require $index_file;
+    include $index_file;
 }
 function delete_page($id) {
     global $state, $index_file, $Mark_Links_Action;
@@ -35,7 +35,7 @@ function delete_page($id) {
     file_put_contents($index_file, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");
     if ($state != 'delete') {
         $index_file2 = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Index/delete.php';
-        require $index_file2;
+        include $index_file2;
         $Mark_Links_Action[$id] = $links;
         file_put_contents($index_file2, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");
     } else {
@@ -50,7 +50,7 @@ function revert_page($id) {
     unset($Mark_Links_Action[$id]);
     file_put_contents($index_file, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");
     $index_file2 = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Index/' . $prev_state . '.php';
-    require $index_file2;
+    include $index_file2;
     $Mark_Links_Action[$id] = $links;
     ksort($Mark_Links_Action);
     file_put_contents($index_file2, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");

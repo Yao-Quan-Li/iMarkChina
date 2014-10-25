@@ -75,7 +75,7 @@ if (isset($_POST['Post_VI_Action'])) {
             $post_old_state = $data['state'];
             if ($post_old_state != $post_state) {
                 $index_file = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Post/Index/' . $post_old_state . '.php';
-                require $index_file;
+                include $index_file;
                 unset($Mark_Posts_Action[$post_id]);
                 file_put_contents($index_file, "<?php\n\$Mark_Posts_Action=" . var_export($Mark_Posts_Action, true) . "\n?>");
             }
@@ -90,7 +90,7 @@ if (isset($_POST['Post_VI_Action'])) {
             'can_comment' => $post_can_comment,
         );
         $index_file = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Post/Index/' . $post_state . '.php';
-        require $index_file;
+        include $index_file;
         $Mark_Posts_Action[$post_id] = $data;
         uasort($Mark_Posts_Action, "post_sort");
         file_put_contents($index_file, "<?php\n\$Mark_Posts_Action=" . var_export($Mark_Posts_Action, true) . "\n?>");

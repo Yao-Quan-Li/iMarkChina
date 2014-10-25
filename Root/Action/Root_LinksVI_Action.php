@@ -73,7 +73,7 @@ if (isset($_POST['Post_VI_Action'])) {
             $links_old_state = $data['state'];
             if ($links_old_state != $links_state || $links_old_path != $links_path) {
                 $index_file = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Index/' . $links_old_state . '.php';
-                require $index_file;
+                include $index_file;
                 unset($Mark_Links_Action[$links_old_path]);
                 file_put_contents($index_file, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");
             }
@@ -88,7 +88,7 @@ if (isset($_POST['Post_VI_Action'])) {
             'url'    => $links_url,
         );
         $index_file = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Links/Index/' . $links_state . '.php';
-        require $index_file;
+        include $index_file;
         $Mark_Links_Action[$links_path] = $data;
         ksort($Mark_Links_Action);
         file_put_contents($index_file, "<?php\n\$Mark_Links_Action=" . var_export($Mark_Links_Action, true) . "\n?>");

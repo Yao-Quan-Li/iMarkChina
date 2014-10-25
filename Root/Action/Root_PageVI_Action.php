@@ -71,7 +71,7 @@ if (isset($_POST['Post_VI_Action'])) {
             $page_old_state = $data['state'];
             if ($page_old_state != $page_state || $page_old_path != $page_path) {
                 $index_file = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Page/Index/' . $page_old_state . '.php';
-                require $index_file;
+                include $index_file;
                 unset($Mark_Pages_Action[$page_old_path]);
                 file_put_contents($index_file, "<?php\n\$Mark_Pages_Action=" . var_export($Mark_Pages_Action, true) . "\n?>");
             }
@@ -86,7 +86,7 @@ if (isset($_POST['Post_VI_Action'])) {
             'can_comment' => $page_can_comment,
         );
         $index_file = $_SERVER['DOCUMENT_ROOT'] . '/Index/Data/Page/Index/' . $page_state . '.php';
-        require $index_file;
+        include $index_file;
         $Mark_Pages_Action[$page_path] = $data;
         ksort($Mark_Pages_Action);
         file_put_contents($index_file, "<?php\n\$Mark_Pages_Action=" . var_export($Mark_Pages_Action, true) . "\n?>");
