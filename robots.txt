@@ -1,5 +1,0 @@
-# robots.txt generated at http://www.imarkchina.cn/ 
-User-agent: *
-Disallow: /Index/Data/
-Disallow: /Public/
-Disallow: /Root/ 
