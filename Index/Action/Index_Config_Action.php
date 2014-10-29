@@ -1,6 +1,6 @@
 <?php
 $Mark_Config_Action = array (
-  'site_link' => 'http://test.com',
+  'site_link' => 'http://www.imarkchina.cn',
   'site_name' => '开发代号: iMarkChina',
   'site_desc' => '轻量级博客，iMarkChina！',
   'user_name' => 'root',
@@ -17,7 +17,7 @@ $Mark_Config_Action = array (
   'site_mumber' => '5',
   'style' => 'Default',
   'nametwo' => 'i have a dream，i have a big dream.',
-  'fdlinks' => 'open',
+  'fdlinks' => 'close',
   'write' => 'close',
 )
 ?>
