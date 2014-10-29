@@ -59,19 +59,18 @@ include 'head.php'; ?>
         </div>
     </div>
     <?php
-$fdlinks = $Mark_Config_Action['fdlinks'];
-if ($fdlinks == open) {
- if ($Mark_Url_Action != ''){ echo "<!--------->"; 
-}else {
- if ($Mark_Get_Type_Action == 'index') { ?>
-<div id="abc">
-    <font color="#CCCCCC">
-    <h5> 友情链接</h5>
-    </font>
-    <?php Mark_Links('<li>','</li>'); ?>
-</div><br/>
-<?php } } }?>
-    <?php include 'footer.php'; ?>
+                $fdlinks = $Mark_Config_Action['fdlinks'];
+                if ($fdlinks == open) {
+                 if ($Mark_Url_Action != ''){ echo "<!--------->"; 
+                }else {
+                 if ($Mark_Get_Type_Action == 'index') { ?>
+                <div id="abc">
+                    <font color="#CCCCCC">
+                    <h5> 友情链接</h5>
+                    </font>
+                    <?php Mark_Links('<li>','</li>'); ?>
+                </div><br/>
+                <?php } } }  include 'footer.php'; ?>
 </div>
 </body>
 </html>

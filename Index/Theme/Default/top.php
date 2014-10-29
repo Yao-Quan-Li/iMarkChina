@@ -7,9 +7,7 @@
 */
 ?> 
 <div class="g-hd">
-  <h1 class="m-ttl">
-  <a href="/"><?php Mark_Site_Name();?> </a>
-  </h1>
+  <h1 class="m-ttl"><a href="/"><?php Mark_Site_Name();?> </a></h1>
   <p class="m-about"><?php Mark_Site_Name_Two();?></p>
   <ul class="m-nav">
     <li><a href="<?php Mark_Site_Link(); ?>/">首页</a></li>

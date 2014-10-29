@@ -34,15 +34,15 @@ listFiles("$dir/$file",$keyword,$array);
 }
 else{
 $data=fread(fopen("$dir/$file","r"),filesize("$dir/$file"));
-if(eregi("<body([^>]+)>(.+)</body>",$data,$b)){
-$body=strip_tags($b["2"]);
+if(@preg_match("/<body([^>]+)>(.+)</body>/i",$data,$c)){
+$body=strip_tags($c["2"]);
 }
 else{
 $body=strip_tags($data);
 }
-if($file!="Mark.php"){ //Don't fine me;
-if(eregi("$keyword",$body)){
-if(eregi('"title"(.+)"tags"',$data,$m)){
+if($file!="Index_Code_Action.php"){ //Don't fine me;
+if(preg_match("/$keyword/i",$body)){
+if(preg_match('/"title"(.+)"tags"/i',$data,$m)){
 $title=$m["1"];
 }
 else{
@@ -61,7 +61,7 @@ listFiles(".","$keyword",$array);
 if ($array != null) {
 foreach($array as $value){
 //open the $filedir and the $title;
-list($filedir,$title)=split("[ ]",$value,"2");
+list($filedir,$title)=preg_split("[ ]",$value,"2");
 // Delete something I don't need,Start;
 $postlist = substr($filedir,0,strlen($filedir)-11);
 $filedir = str_replace($postlist, '', $filedir);

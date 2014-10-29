@@ -374,7 +374,7 @@ function Mark_Links($a,$b){
     $Link_id = $Link_ids[$i];
     $post = $Mark_Links_Action[$Link_id];
     $Link_array = array_merge($Link_array, (array)$post['title']);
-    $Links_array = array_merge($Links_array,(array)$post['content']);
+    $Links_array = array_merge($Links_array,(array)$post['url']);
     echo $a.'<a href="' . $Links_array[$i] . '" target="_blank">' . $Link_array[$i] . '</a>'.$b;
     }
 }

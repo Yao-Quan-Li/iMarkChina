@@ -104,8 +104,8 @@ if ($Mark_Get_Type_Action == 'post') {
 }
 if ($Mark_Get_Type_Action != 'rss'){ 
     global  $Mark_Config_Action;
-    $Mark_Test = $Mark_Config_Action['style'];
-    include $_SERVER['DOCUMENT_ROOT'] . '/Index/Theme/'.$Mark_Test.'/index.php';
+    $Mark_style = $Mark_Config_Action['style'];
+    include $_SERVER['DOCUMENT_ROOT'] . '/Index/Theme/'.$Mark_style.'/index.php';
 }else {
     include $_SERVER['DOCUMENT_ROOT'] . '/Index/Action/Index_Rss_Action.php';
 }
